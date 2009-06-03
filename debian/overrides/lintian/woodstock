@@ -1,0 +1,4 @@
+woodstock: sharedobject-in-library-directory-not-actually-a-shlib lib/woodstock.so
+woodstock: command-with-path-in-maintainer-script prerm:26 /usr/sbin/ld.so.preload-manager
+woodstock: sharedobject-in-library-directory-missing-soname lib/woodstock.so
+woodstock: description-contains-homepage

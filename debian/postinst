@@ -1,0 +1,24 @@
+#!/bin/sh
+
+set -e
+
+. /usr/share/debconf/confmodule
+
+[ -n "$SNOOPYDEBUG" ] && set -x
+
+PRELOAD="/etc/ld.so.preload"
+LIBNAME="/lib/woodstock.so"
+
+if [ "$1" = "configure" ]; then
+
+	# is woodstock already in $PRELOADFILE?
+
+	test -f	$PRELOAD && grep "^$LIBNAME" $PRELOAD && exit 0
+
+	db_get woodstock/install-ld-preload
+	if [ x"$RET" = x"true" ]; then
+		ld.so.preload-manager -y $LIBNAME > /dev/null
+	fi
+fi
+
+#DEBHELPER#

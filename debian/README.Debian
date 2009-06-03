@@ -1,0 +1,18 @@
+woodstock for Debian
+-----------------
+
+This program is best used by adding it to /etc/ld.so.preload. There
+are debconf questions and scripts in place to allow you to do so
+during package installation.
+
+This will force woodstock to intercept all readline calls on the system, 
+and log them in accordance with your syslog policy.
+
+The /etc/ld.so.preload line is automatically removed when the package
+is removed.
+
+You can install woodstock manually by typing the following:
+
+echo "/lib/woodstock.so" >> /etc/ld.so.preload
+
+ -- Camille Moncelier <moncelier@devlife.org>, Mon,  1 Jun 2009 00:00:00 +0100

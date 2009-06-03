@@ -1,0 +1,37 @@
+------------------------------------------------------------------------------
+Woodstock 1.0
+------------------------------------------------------------------------------
+
+   moncelier@devlife.org
+
+
+D E S C R I P T I O N
+
+  Woodstock is designed to aid the taks of a sysadmin by providing a log of
+  line read by readline. Woodstock is  completely transparent  to the user 
+  and applications it hooks in as a library providing a wrapper around calls
+  to readline() calls. Logging is done via syslogd and written to user
+  allowing offsite logging of activity, generally the user is
+  stored as /var/log/user.log.
+
+
+U S A G E
+
+  Woodstock is  able to log all  users or just root,  this functionality is
+  configured at compile through the woodstock.h header, #define ROOT_ONLY 1
+  will restrict logging to root activities. Installation is as follows: 
+
+     make
+     make install
+
+  Woodstock is placed in /etc/ld.so.preload to trap all occurances of exec,
+  if you wish to monitor only certain applications you can do so through
+  the $LD_PRELOAD environment variable - simply set it to /lib/woodstock.so
+  before loading the application. For example:
+
+     export LD_PRELOAD=/lib/woodstock.so
+     lynx http://linux.com/
+     unset LD_PRELOAD 
+
+  To remove woodstock later, simply edit /etc/ld.so.preload and remove the
+  reference to woodstock.so and delete /lib/woodstock.so.

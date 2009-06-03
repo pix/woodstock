@@ -1,0 +1,17 @@
+#!/bin/sh
+
+set -e
+
+. /usr/share/debconf/confmodule
+
+[ -n "$SNOOPYDEBUG" ] && set -x
+
+PRELOAD="/etc/ld.so.preload"
+LIBNAME="/lib/woodstock.so"
+
+# is woodstock already in $PRELOADFILE?
+
+test -f $PRELOAD && grep "^$LIBNAME" $PRELOAD && exit 0
+
+db_input critical woodstock/install-ld-preload || true
+db_go

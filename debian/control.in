@@ -1,0 +1,19 @@
+Source: woodstock
+Section: admin
+Priority: optional
+Maintainer: Camille Moncelier <moncelier@devlife.org>
+Build-Depends: @cdbs@, cdbs
+Standards-Version: 3.6.2
+
+Package: woodstock
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ld.so.preload-manager (>= 0.1)
+Description: An readline() wrapper and logger
+ woodstock is merely a shared library that is used as a wrapper
+ to the readline() function provided by readline as to log every call
+ to syslog (authpriv).  system administrators may find woodstock
+ useful in tasks such as light/heavy system monitoring, tracking other
+ administrator's actions as well as getting a good 'feel' of
+ what's going on in the system (for example apache running cgi
+ scripts).
+ .

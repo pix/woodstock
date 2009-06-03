@@ -1,0 +1,7 @@
+Template: woodstock/install-ld-preload
+Type: boolean
+Default: false
+_Description: Install woodstock library to /etc/ld.so.preload?
+ woodstock is a library that can only reliably do its work if it is
+ mandatorily preloaded via /etc/ld.so.preload. Since this can potentially
+ do harm to the system, your consent is needed.
