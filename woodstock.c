@@ -46,7 +46,7 @@ static inline void logline(const char *line) {
 	char exepath[256], args[512];
 	char* exename;
 	int ret;
-	unsigned int i;
+	int i;
 	FILE* fd;
 
 	#if ROOT_ONLY
@@ -72,13 +72,14 @@ static inline void logline(const char *line) {
 
 	fd = fopen("/proc/self/cmdline", "r");
 	if(fd){
-		if( fread(args, 1, sizeof(args), fd) > 0){
-			for(i = 0; i < sizeof(args) - 2; i++){
-				if(args[i] == '\0' && args[i+1] != '\0'){
+		ssize_t size = fread(args, 1, sizeof(args), fd);
+		if(size > 0){
+			for(i = 0; i < size - 2; i++){
+				if(args[i] == '\0' && args[i + 1] != '\0'){
 					args[i] = ' ';
 				}
 			}
-			args[sizeof(args)-1] = '\0';
+			args[size-1] = '\0';
 		}
 		fclose(fd);
 	}else{
