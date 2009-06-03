@@ -35,3 +35,8 @@ U S A G E
 
   To remove woodstock later, simply edit /etc/ld.so.preload and remove the
   reference to woodstock.so and delete /lib/woodstock.so.
+
+M O R E    I N F O R M A T I O N
+
+  Woodstock is based on Snoopy by marius and mbm (More info at
+  http://sourceforge.net/projects/snoopylogger
